@@ -4,23 +4,23 @@ $username = "root";
 $password = "";
 $dbname = "library";
 
-// Menghubungkan ke database
+// Connect to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Memeriksa koneksi
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Mengambil nilai borrow_id dari URL
+// Get the borrow_id value from the URL
 if (isset($_GET['borrow_id'])) {
     $borrow_id = $_GET['borrow_id'];
 
-    // Menyiapkan statement SQL untuk menghindari SQL Injection
+    // Prepare the SQL statement to avoid SQL Injection
     $stmt = $conn->prepare("DELETE FROM borrow WHERE borrow_id = ?");
     $stmt->bind_param("s", $borrow_id);
 
-    // Menjalankan query
+    // Execute the query
     if ($stmt->execute()) {
         echo "
             <script>
@@ -37,7 +37,7 @@ if (isset($_GET['borrow_id'])) {
         ";
     }
 
-    // Menutup statement
+    // Close the statement
     $stmt->close();
 } else {
     echo "
@@ -48,6 +48,6 @@ if (isset($_GET['borrow_id'])) {
     ";
 }
 
-// Menutup koneksi
+// Close the connection
 $conn->close();
 ?>

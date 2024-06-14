@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 $dbname = "library";
 
-// Menghubungkan ke database
+// connection to database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -6,8 +6,13 @@ $username = "root";
 $password = "";
 $dbname = "library";
 
-// Menghubungkan ke database
+// Connecting to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Checking the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];

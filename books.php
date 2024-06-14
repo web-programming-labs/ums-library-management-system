@@ -4,15 +4,15 @@ $username = "root";
 $password = "";
 $dbname = "library";
 
-// Menghubungkan ke database
+// Connect to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Memeriksa koneksi
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Mengambil data buku
+// Retrieve book data
 $sql = "SELECT * FROM book";
 $result = $conn->query($sql);
 ?>
